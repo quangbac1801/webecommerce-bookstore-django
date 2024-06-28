@@ -1,0 +1,46 @@
+.errorlist{
+    color: red;
+    list-style-type: none;
+    padding: 0;
+}
+.navbar-nav .nav-item {
+    margin-right: 1rem; 
+}
+.card_product:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cart-badge {
+position: relative;
+top: -8px; 
+left: -5px; 
+font-size: 12px;
+}
+
+#popup-cart {
+  position: absolute;
+  background-color: #fff;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1c8353;
+  text-align: center;
+  width: 90%;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#popup-cart.active {
+  opacity: 1;
+  top: 10px;
+}
+
+#popup-cart i {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 30px;
+}

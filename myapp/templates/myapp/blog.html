@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Blog{% endblock %}
+{% load static %}
+{% block content %}
+<!-- News Section -->
+
+<div class="row gx-5 " style="margin-top: 100px;">
+    {% for post in posts %}
+    <div class="col-md-6 mb-4">
+        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+            <img src="/static{{ post.image.url }}" class="img-fluid" alt="{{ post.title }}" style="height: 30%; width: 30%; margin-left: 200px;" />
+            <a href="#">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">News of the day</span>
+        <h4><strong>{{ post.title }}</strong></h4>
+        <p class="text-muted">{{ post.content|truncatechars:200|safe }}</p>
+        <a href="#" class="btn btn-primary">Read more</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+{%endblock%}

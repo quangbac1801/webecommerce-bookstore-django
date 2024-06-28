@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xác nhận đơn hàng</title>
+</head>
+<body>
+    <h2>Xác nhận đơn hàng</h2>
+    <p>Xin chào {{ order.user.first_name }} {{ order.user.last_name }},</p>
+    <p>Cảm ơn bạn đã đặt hàng!</p>
+    
+    <p>Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn đã được nhận và đang được xử lý.</p>
+    
+    <h3>Chi tiết đơn hàng</h3>
+    <p>Mã đơn hàng: {{ order.order_code }}</p>
+    <p>Tổng tiền: {{ order.total_amount|floatformat:"g" }}</p>
+    <p>Phương thức thanh toán: {{order.payment_method }}</p>
+    <p>Xin vui lòng kiểm tra lại các thông tin chi tiết trong đơn hàng của bạn.</p>
+    
+    <p>Trân trọng,</p>
+    <p>Đội ngũ hỗ trợ của chúng tôi</p>
+    <p>{{ domain }}</p>
+</body>
+</html>

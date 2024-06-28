@@ -1,0 +1,50 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Đăng Nhập{% endblock %}
+{% load static %}
+{% load socialaccount %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="vh-100" style="margin-top: 50px; margin-bottom: 100px;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <form method="post" action="{% url 'login' %}"> 
+                            {% csrf_token %} 
+                            <h3 class="mb-5">Đăng Nhập</h3>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="typeEmailX-2">Username</label>
+                            {{ form.username|add_class:'form-control form-control-lg'}}
+                            </div>
+                            <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label" for="typePasswordX-2">Password</label>
+                            {{ form.password|add_class:'form-control form-control-lg'}}
+                            </div>
+                            {% if messages %}
+                            <div id="flash-message" class="alert alert-danger" role="alert">
+                                {% for message in messages %}
+                                  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Đăng Nhập">
+                            <input type="hidden" name="next" value="{{ next }}"> 
+                            <hr class="my-4">
+                            <div class="text-center">
+                                <p>Bạn chưa có tài khoản? <a href="{% url 'register'%}">Đăng ký</a></p>
+                               
+                              </div>
+                        </form>
+                        <p>hoặc đăng nhập với:</p>
+                        <a href="{% provider_login_url 'google' %}" class="mx-1"><i class="fab fa-google"></i></a>
+                        <a href="{% provider_login_url 'facebook' method='oauth2' %}" class="mx-1"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

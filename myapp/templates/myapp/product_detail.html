@@ -1,0 +1,118 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Chi Tiết Sản Phẩm{% endblock %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<form id="product-form" action="{% url 'add_to_cart' product.id %}" method="post" style="margin-top: 50px;">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <section class="py-5">
+      <div class="container">
+          <div class="row gx-5">
+              <div id="carouselExampleControls" class="carousel slide col-lg-6" data-ride="carousel" data-interval="3000">
+                  <div class="carousel-inner">
+                      {% for img in product.images.all %}
+                      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                          <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 d-block w-100" src="/static{{ img.image.url }}" alt="Slide {{ forloop.counter }}">
+                      </div>
+                      {% endfor %}
+                  </div>
+                  <a class="carousel-control-prev text-light" href="#carouselExampleControls" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                  </a>
+              </div>
+              <main class="col-lg-6">
+                  <div class="ps-lg-3" style="padding-top: 100px;">
+                      <h4 class="title text-dark">{{ product.name }}</h4>
+                      <div class="d-flex flex-row my-3">
+                          <div class="text-warning mb-1 me-2">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fas fa-star-half-alt"></i>
+                              <span class="ms-1">4.5</span>
+                          </div>
+                          <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i></span>
+                      </div>
+
+                      <div class="mb-3">
+                          <span class="text-secondary" style="text-decoration-line: line-through;">{{ product.price|floatformat:"g" }}</span>
+                          <span class="text-muted" style="color: black; font-size: 2rem;">{{ product.sale_price|floatformat:"g" }}</span>
+                      </div>
+
+                      <div class="col-md-4 col-6 mb-3">
+                          <label class="mb-2 d-block">Số lượng</label>
+                          <input type="number" name="quantity" id="number" value="1" min="1">
+                      </div>
+                      <input type="submit" id="btn-add-cart" class="btn btn-primary shadow-0" style="margin-left: 20px; font-size: 1.5rem;" value="Thêm vào giỏ" >
+                      <div id="popup-cart"><i class="fa-regular fa-circle-check">Thêm Vào Giỏ Hàng Thành Công</i></div>
+                  </div>
+              </main>
+          </div>
+      </div>
+  </section>
+</form>
+
+<section class="bg-light border-top py-4">
+    <div class="container">
+      <div class="row gx-4">
+        <div class="col-lg-8 mb-4">
+          <div class="border rounded-2 px-3 py-2 bg-white">
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                <li class="nav-item d-flex" role="presentation">
+                    <a class="nav-link d-flex align-items-center justify-content-center w-100 active bg-secondary" id="ex1-tab-1" data-mdb-toggle="pill" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true">Giới Thiệu</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="ex1-content">
+              <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                <p>{{ product.description|safe }}</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="px-0 border rounded-2 shadow-0">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sản phẩm tương tự</h5>
+                {% for m in similar_products %}
+                    <div class="d-flex mb-3">
+                        {% if m.images.first %}
+                            <a href="{% url 'product_detail' m.id %}" class="me-3">
+                                <img src="/static{{ m.images.first.image.url }}" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
+                            </a>
+                        {% endif %}
+                        <div class="info">
+                            <h4 class="card-title" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px; font-size: 1rem;">{{ m.name }}</h4>
+                            <strong class="text-dark">{{ m.sale_price|floatformat:"g" }} vnd</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<script>
+  const btnAddCart = document.querySelector("#btn-add-cart");
+  const popupAddCart = document.querySelector("#popup-cart");
+  btnAddCart.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    popupAddCart.classList.add("active");
+    setTimeout(() => {
+      popupAddCart.classList.remove("active");
+      document.getElementById("product-form").submit(); 
+    }, 2000);
+  });
+</script>
+{% endblock %}

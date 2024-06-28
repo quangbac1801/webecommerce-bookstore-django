@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Statistics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Total Users -->
+        <div class="row mb-4 mt-2">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h6 class="text-uppercase mb-0">Người dùng</h6>
+                            <span class="h2 font-weight-bold">{{ total_users }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white shadow">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h6 class="text-uppercase mb-0">Số đơn hàng trong tháng</h6>
+                            <span class="h2 font-weight-bold">{{ orders_this_month }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white shadow">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h6 class="text-uppercase mb-0">Doanh thu tháng</h6>
+                            <span class="h2 font-weight-bold">{{ total_orders_this_month|floatformat:"g" }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Heading -->
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ </div>   
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var revenueChart = document.getElementById('revenueChart').getContext('2d');
+
+        var revenueData = {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh thu hàng tháng',
+                data: {{ monthly_revenues|safe }},
+
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    callback: function(value) {
+                        return '$' + value.toLocaleString();
+                    }
+                }
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                        return '$' + value.toLocaleString();
+                    }
+                }
+            }
+        };
+
+        new Chart(revenueChart, {
+            type: 'bar',
+            data: revenueData,
+            options: options
+        });
+    });
+</script>
+</body>
+</html>

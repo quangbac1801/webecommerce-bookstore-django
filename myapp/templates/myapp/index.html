@@ -1,0 +1,105 @@
+{% extends 'myapp/base.html' %}
+{% block title %}Trang chủ{% endblock %}
+{% load static %}
+{% block content %}
+<!-- Slide banner -->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 50px;">
+  <div class="carousel-inner">
+    {% for slide in slides %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <img class="d-block w-100" src="/static{{ slide.image.url }}" width="700px" height="350px" alt="Slide {{ forloop.counter }}">
+    </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<br>
+
+
+{% if messages %}
+    <div id="flash-message"  role="alert">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+      </div>
+{% endif %}
+<div class="container">
+  <form method="GET" class="form-inline mb-3">
+    <div class="form-group">
+      <label for="sort_by" class="mr-2">Lọc theo:</label>
+      <select name="sort_by" id="sort_by" class="form-control" onchange="this.form.submit()">
+        <option value="">Mặc định</option>
+        <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Giá từ thấp đến cao</option>
+        <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Giá từ cao đến thấp</option>
+        <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>Sản phẩm mới nhất</option>
+        <option value="oldest" {% if sort_by == 'oldest' %}selected{% endif %}>Sản phẩm cũ nhất</option>
+        <option value="best_selling" {% if sort_by == 'best_selling' %}selected{% endif %}>Sản phẩm bán chạy</option>
+      </select>
+    </div>
+  </form>
+  {% if products %}
+    <div class="row">
+        {% for p in products %}
+        <div class="col-md-3 col-sx-12 card_product" style="padding: 5px;" >
+            <div class="card" style="padding: 5px;">
+              <img class="card-img-top" src="/static{{ p.images.first.image.url }}" alt="{{ p.name }}">
+                <div class="card-body">
+                  <h4 class="card-title" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;font-size: 1rem;">{{ p.name }}</h4>
+                  <p class="card-text"><span class="text-secondary"style="text-decoration-line: line-through;">{{ p.price|floatformat:"g" }}</span>   {{ p.sale_price|floatformat:"g" }} VNĐ</span>
+                  <div style="display: flex; align-items: center;">
+                  <form method="POST" action="{% url 'add_to_cart' p.id%}">
+                    {% csrf_token %}
+                      <input type="hidden" name="id_product" value="{{ p.id }}">
+                      <input type="hidden" name="gia" value="{{ p.gia }}">
+                      <button type="submit" id="btn-add-cart" class="btn btn-secondary" >Đặt Hàng</button>
+                  </form>                 
+                    <a href="{% url 'product_detail' p.id%}" class="btn btn-primary" style="margin-left: 10px;">Xem Chi Tiết</a> 
+                    
+                </div>        
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+  <!---->
+  <nav aria-label="Page navigation example center">
+    <ul class="pagination justify-content-center">
+        {% if page.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        {% endif %}
+        
+        {% for num in page.paginator.page_range %}
+        <li class="page-item {% if page.number == num %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %}
+        
+        {% if page.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+    {% else %}
+    <h2>Không có sản phẩm nào</h2>
+    {% endif %}
+</div>
+ 
+{% endblock %}
