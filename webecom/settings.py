@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'myapp',
     'payment',
     'api',
+    'chatbot',
     'oauth2_provider',
     'drf_yasg',
 

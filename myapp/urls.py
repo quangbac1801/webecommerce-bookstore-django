@@ -1,4 +1,7 @@
 from django.urls import include, path
+
+from chatbot.views import get_bot_response
+
 from . import views
 
 
@@ -26,4 +29,5 @@ urlpatterns = [
     path('order/<int:order_id>/cancel/', views.cancel_order, name='cancel_order'),
 
      path('statistics/', views.statistics_view, name='statistics'),
+      path('get/', get_bot_response, name='get_bot_response')
 ]

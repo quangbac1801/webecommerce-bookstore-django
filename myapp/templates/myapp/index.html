@@ -1,7 +1,10 @@
 {% extends 'myapp/base.html' %}
 {% block title %}Trang chủ{% endblock %}
+
+
 {% load static %}
 {% block content %}
+
 <!-- Slide banner -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 50px;">
   <div class="carousel-inner">
@@ -47,7 +50,7 @@
   {% if products %}
     <div class="row">
         {% for p in products %}
-        <div class="col-md-3 col-sx-12 card_product" style="padding: 5px;" >
+        <div class="col-md-3 col-sx-12 card_product" style="padding: 5px;">
             <div class="card" style="padding: 5px;">
               <img class="card-img-top" src="/static{{ p.images.first.image.url }}" alt="{{ p.name }}">
                 <div class="card-body">
@@ -101,5 +104,5 @@
     <h2>Không có sản phẩm nào</h2>
     {% endif %}
 </div>
- 
+{% include 'chatbot/chatbot.html' %}
 {% endblock %}

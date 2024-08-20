@@ -20,7 +20,6 @@ def home(request):
     slides = Slide.objects.filter(active=True)
     sort_by = request.GET.get('sort_by')
     
-    # Thực hiện sắp xếp trước khi chia nhỏ tập dữ liệu
     if sort_by == 'price_asc':
         product_list = Products.objects.all().order_by('sale_price')
     elif sort_by == 'price_desc':

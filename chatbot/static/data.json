@@ -1,0 +1,102 @@
+{
+    "intents": [
+        {
+            "tag": "ngoaile",
+            "patterns": [""],
+            "responses": ["Hãy đặt lại câu hỏi của bạn!","Tôi không hiểu câu hỏi của bạn!","Tôi chưa thể trả lời câu hỏi này!","Vui lòng cung cấp thông tin thêm"]
+        },
+        {
+            "tag": "chaohoi",
+            "patterns": ["Xin chào", "Bạn khỏe không", "Có ai ở đó không?", "Hello","Hi", "chào bạn", "Chào buổi sáng","cho tôi hỏi", "tôi muốn bạn giúp cái này"],
+            "responses": ["Xin chào, tôi có thể giúp gì cho bạn!", "Rất vui được gặp bạn! Bạn muốn tôi giúp gì?", "Xin chào, bạn cần tôi giúp gì?","Xin chào, chúc bạn một ngày tốt lành. Tôi có thể giúp gì cho bạn"]
+        },
+       
+        {
+            "tag": "tambiet",
+            "patterns": ["Tạm biệt", "Hẹn gặp lại sau", "Rất vui khi trò chuyện với bạn, tạm biệt", "Hẹn bạn lần sau nhé"],
+            "responses": ["Hẹn gặp lại bạn!", "Chúc bạn một ngày tốt lành", "Tạm biệt! Hãy quay lại sớm nhé."]
+        },
+        {
+            "tag": "camon",
+            "patterns": ["Cảm ơn", "Cảm ơn bạn", "Rất hữu ích", "Tuyệt vời", "Cảm ơn đã giúp đỡ tôi"],
+            "responses": ["Rất vui được giúp bạn!", "Không có gì! Bất cứ lúc nào bạn cần!", "Tôi luôn sẵn sàng giúp đỡ!"]
+        },
+        {
+            "tag": "hocphi",
+            "patterns":["Học phí là bao nhiêu một tín","Ngành này học phí bao nhiêu","Học phí","Bao nhiêu tiền một tín"],
+            "responses":["Đơn giá học phí (dự kiến) năm học là : Khối kinh tế:352 000 đồng/ 1 tín chỉ và Khối kỹ thuật:389 000 đồng/ 1 tín chỉ,Học phí dự kiến với sinh viên chính quy; lộ trình tăng học phí tối đa cho từng năm (nếu có)"]
+        },
+        {
+            "tag":"phuongthucxt",
+            "patterns":["Hình thức xét tuyển là gì","phương thức xét tuyển như thế nào","Có mấy cách xét tuyển"],
+            "responses":["Nhà trường có 5 phương thức xét tuyển: 1. Xét tuyển dựa vào kết quả thi tốt nghiệp THPT năm 2024; 2.Xét tuyển theo học bạ; 3.Xét tuyển thẳng HSG theo kết quả học THPT cấp tỉnh, cấp quốc gia, quốc tế; 4.Thí sinh có Chứng chỉ Tiếng Anh quốc tế trong thời hạn đạt IELTS 4.5 trở lên hoặc TOEFL ITP 450 trở lên hoặc TOEFL iBT 53 trở lên và có tổng điểm 2 môn thi tốt nghiệp THPT năm 2024 theo tổ hợp môn xét tuyển của Trường trừ môn thi Tiếng Anh, đạt từ 10 điểm trở lên, trong đó có môn thi Toán; 5.Sử dụng kết quả đánh giá tư duy của ĐH BKHN"]
+        },
+        {
+            "tag":"hocba",
+            "patterns":["Xét bằng học bạ như thế nào","xét học bạ cần những gì"],
+            "responses":["Đối với phương thức xét học bạ: Thí sinh tốt nghiệp THPT và kết quả học tập trong 3 học kỳ (Lớp 11, và học kỳ 1 lớp 12). Xét tuyển thí sinh theo học bạ với các thí sinh đạt hạnh kiểm xếp loại Khá trở lên;Tổng điểm trung bình các môn học theo khối thi của 3 học kỳ THPT:  lớp 11 và kỳ I lớp 12 đạt từ 18 điểm trở lên"]
+        },
+        {
+            "tag":"thoigianxt",
+            "patterns":["Thời gian xét tuyển", "Thời gian để nộp hồ sơ"],
+            "responses":["Thời gian: Đợt 1 theo quy định của Bộ giáo dục và Đào tạo. Đợt 2 sẽ có thông báo sau khi kết thúc đợt 1.Bạn có thể theo dõi thông tin tại: https://tuyensinh.humg.edu.vn/Pages/home.aspx"]
+        },
+        {
+            "tag":"huongdanxtonl",
+            "patterns":["cách để nộp học bạ online","ĐĂNG KÝ XÉT TUYỂN THEO HỌC BẠ ONLINE "],
+            "responses":["Bạn có thể đọc bài viết hướng dẫn tại đây: https://ts.humg.edu.vn/tuyen-sinh/Pages/Thong-tin-tuyen-sinh.aspx?ItemID=7049"]
+        },
+        {
+            "tag":"giayto",
+            "patterns":["Cần những giấy tờ gì khi nộp hồ sơ","hồ sơ cần giấy tờ gì"],
+            "responses":["Cần những loại giấy tờ sau:1.học bạ bản photo công chứng; 2. Chứng minh thư nhân dân photo công chứng; 3. 4 ảnh 4 x 64. Giấy khai sinh; 5. Những giấy tờ ưu tiên (nếu có)"]
+        },
+        {
+            "tag":"tohopxt",
+            "patterns":["Xét tổ hợp nào", "có những tổ hợp nào","Ngành này có xét tổ hợp này không"],
+            "responses":["Các tổ hợp xét tuyển gồm: A00, A01, A06, D01, D07, B00, C04, C01..Bạn có thể xem chi tiết tổ hợp xét tuyển từng ngành trong để án tuyển sinh của trường tại: https://humg.edu.vn/tin-tuc/Pages/chi-tiet.aspx?CateID=634&ItemID=8837"]
+
+        },
+        {
+            "tag":"nganhhoc",
+            "patterns":["Có những ngành nào ", "có tất cả bao nhiêu ngành", "ngành đào tạo"],
+            "responses":["Hiện tại nhà trường xét tuyển hơn 40 ngành đào tạo về kỹ thuật, kinh tế, mỏ, môi trường... bạn có thể xem chi tiết tại trang tuyển sinh nhà trường https://tuyensinh.humg.edu.vn/Pages/home.aspx"]
+        },
+        {
+            "tag":"congnghett",
+            "patterns":["ngàng công nghệ thông tin ", "cntt", "it"],
+            "responses":["Ngành CNTT của Trường Đại học Mỏ - Địa chất tập trung vào 6 hướng chuyên sâu phổ biến trong lĩnh vực công nghệ thông tin và công nghệ thông tin ứng dụng là thế mạnh của Trường, gồm:- Công nghệ Phần mềm- Công nghệ Thông tin Địa học- Hệ thống Thông tin- Khoa học Máy tính- Mạng Máy tính - Tin học Kinh tế. Vị trí việc làm:- Nhà tư vấn, giám sát, quản lý, vận hành, lãnh đạo trong lĩnh vực công nghệ thông tin cho các tổ chức, doanh nghiệp hay cá nhân.- Lập trình viên, kỹ thuật viên, quản trị viên hệ thống công nghệ thông tin cho các tổ chức, doanh nghiệp hay cá nhân.- Cán bộ nghiên cứu, phân tích trong lĩnh vực công nghệ thông tin tại các viện nghiên cứu hay các trường đại học."]
+        },
+        {
+            "tag":"cncntt",
+            "patterns":["công nghệ phần mềm ","chuyên ngành công nghệ thông tin", "cnpm","Khoa học máy tính","khmt","hệ thống thông tin","mạng máy tính","Tin kinh tế","tin địa học"],
+            "responses":["Ngành CNTT  HUMG gồm những chuyên ngành sau:(1) Công nghệ phần mềm; (2) CNTT địa học; (3) Hệ thống thông tin; (4) Khoa học máy tính; (5) Mạng máy tính; (6) Tin học Kinh tế . Để hiểu hơn bạn có đọc chi tiết tại http://tuyensinh.humg.edu.vn/tuyen-sinh/Pages/chuong-trinh-dao-tao-HUMG.aspx?ItemID=6754"]
+        },
+        {
+            "tag":"quantrikd",
+            "patterns":["Ngành Quản trị kinh doanh sẽ đào tạo những gì và ra truờng nguời học sẽ hoạt động trong những lĩnh vực nào?","Quản trị kinh doanh, kế toán","qtkd"],
+            "responses":["Chương trình đào tạo ngành QTKD trang bị cho người học các kiến thức nền tảng về Quản trị và các kiến thức sâu của các chức năng quản trị cụ thể như : hoạch định, tổ chức, điều hành, giám sát. Do vậy sau khi học có thể vào các vị trí như:- Chuyên viên phòng kinh doanh, phòng kế hoạch, phòng Marketing, phòng tổ chức, phòng vật tư, phòng hỗ trợ-giao dịch khách hàng, Ban dự án của các công ty tập đoàn- Thăng tiến trở thành giám đốc điều hành, giám đốc tài chính tại các công ty tập đoàn- Có thể tự mở công ty riêng- Trở thành giảng viên ngành QTKD các trường đại học cao đẳng"]
+        },
+        {
+            "tag":"ktdien",
+            "patterns":["kỹ thuật điện tử", "ngàng điện"],
+            "responses":["Nếu học kỹ thuật điện, các em hoàn toàn có thể tham gia các chương trình thực tế, và các em có quyền làm điều đó. Việc học tập theo hệ thống tín chỉ, giúp người học tự chủ động trong việc học tạp và các hoạt động khác. Các thầy cô trpng khoa Cơ - Điện, có nhiệt huyết, có thời gian và có điều kiện để giúp đỡ sinh viên trong quá trình học."]
+        },
+        {
+            "tag":"daukhi",
+            "patterns":["Để trở thành kỹ sư về lĩnh vực dầu khí, người học cần những tố chất nào?"],
+            "responses":["Có nhiều yếu tố nên xét đến: Đam và sở thích của bản thân, Khả năng của mình, Nhu cầu xã hội, Ngoại hình, Sức khỏe, Gia đình... Tuy nhiên, yếu tố quan trọng nhất chính là phụ thuộc vào bản thân của bạn. Do đó, hãy xác định mục tiêu, khơi dậy niềm đam mê và từng bước hoàn thành mục tiêu đó. Hãy luôn là chính mình trong mọi quyết định, chắc chắn bạn sẽ thành công. Từ các yếu tố trên các bạn sẽ thấy tố chất quan trọng nhất đó là là niềm đam mê"]
+        },
+        {
+            "tag":"vieclam",
+            "patterns":["Trường có đảm bảo việc làm cho sinh viên sau khi tốt nghiệp không? Những ngành nào đảm bảo 100% sinh viên ra trường có việc làm ạ?"],
+            "responses":["Trường có phòng Quan hệ công chúng và Doanh nghiệp phụ trách vấn đề việc làm cho sinh viên, các ngành đều có thể xin được việc làm và có một số ngành, Giảng viên cam kết xin việc cho các em như: Địa tin học, Trắc địa công trình, Địa chất..."]
+        },
+        {
+            "tag":"diem",
+            "patterns":["Điểm trúng tuyển những năm gần đây","Được từng này điểm có đỗ không"],
+            "responses":["Bạn có thể tham khảo điểm trúng tuyển các năm tại đây https://tuyensinh.humg.edu.vn/tuyen-sinh/Pages/Hoc-phi-hoc-bong.aspx"]
+        }
+
+    ]
+}
