@@ -19,7 +19,10 @@ from django.contrib.admin.views.decorators import staff_member_required
 def home(request):
     slides = Slide.objects.filter(active=True)
     sort_by = request.GET.get('sort_by')
+<<<<<<< HEAD
     
+=======
+>>>>>>> 5ed6ca66170e1c99d7bc2aa22879da91d634d458
     if sort_by == 'price_asc':
         product_list = Products.objects.all().order_by('sale_price')
     elif sort_by == 'price_desc':
